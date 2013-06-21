@@ -1,0 +1,83 @@
+Domain Information: [ドメイン情報] 
+a. [ドメイン名] GIHYO.CO.JP 
+e. [そしきめい] かぶしきがいしゃぎじゅつひょうろんしゃ 
+f. [組織名] 株式会社技術評論社 
+g. [Organization] Gijutsu-Hyohron Co., Ltd. 
+k. [組織種別] 株式会社 
+l. [Organization Type] Corporation 
+m. [登録担当者] KS10840JP 
+n. [技術連絡担当者] HI014JP 
+n. [技術連絡担当者] HK034JP 
+p. [ネームサーバ] mail0.gihyo.co.jp 
+p. [ネームサーバ] dns3.odn.ne.jp 
+s. [署名鍵] 
+[状態] Connected (2014/03/31) 
+[接続年月日] 2010/06/24 
+[最終更新] 2013/04/01 01:14:30 (JST) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     # Server
+     BEGIN {
+       print strftime() |& "/inet/udp/8888/0/0"
+       close("/inet/udp/8888/0/0")
+     }
+The receiver is almost identical to the TCP receiver:
+
+     # Client
+     BEGIN {
+       "/inet/udp/0/localhost/8888" |& getline
+       print $0
+       close("/inet/udp/0/localhost/8888")
+     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+In May of 1997, Jürgen Kahrs felt the need for network access from awk, and, with a little help from me, set about adding features to do this for gawk. At that time, he wrote the bulk of this web page.
+
+The code and documentation were added to the gawk 3.1 development tree, and languished somewhat until I could finally get down to some serious work on that version of gawk. This finally happened in the middle of 2000.
+
+Meantime, Jürgen wrote an article about the Internet special files and ‘|&’ operator for Linux Journal, and made a networking patch for the production versions of gawk available from his home page. In August of 2000 (for gawk 3.0.6), this patch also made it to the main GNU ftp distribution site.
+
+For release with gawk, I edited Jürgen's prose for English grammar and style, as he is not a native English speaker. I also rearranged the material somewhat for what I felt was a better order of presentation, and (re)wrote some of the introductory material.
+
+The majority of this document and the code are his work, and the high quality and interesting ideas speak for themselves. It is my hope that these features will be of significant value to the awk community.
