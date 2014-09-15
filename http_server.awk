@@ -1,3 +1,4 @@
+#!/usr/bin/gawk -f
 BEGIN {
 	RS = ORS = "\r\n"
 
@@ -10,6 +11,7 @@ BEGIN {
         net = "/inet/tcp/8080/0/0"
 
         while (net |& getline mes > 0) {
+	print mes
 		func_name()
         }
 	close(net)
@@ -18,6 +20,10 @@ BEGIN {
 
 function func_name()
 {
+	print "HTTP/1.0 200 OK"
+	print "Cache-Control: private"
+	print "Content-Type: text/html"
+	print ""
 	while ((getline content < html_file) > 0) {
 		print content |& net
 	}
